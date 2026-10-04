@@ -28,7 +28,7 @@ module top_tm1638_demo(
     wire [7:0] tm_data, tm_in;
     reg [7:0] tm_out;
     
-    // Variabel Animasi LED Atas (Ping-pong Berbasis Posisi)
+    // Variabel Animasi LED Atas 
     reg [2:0] led_pos = 0;   // Nilai 0 sampai 7 (mewakili LED 1 sampai 8)
     reg led_dir = 0;         // 0: Geser ke kanan, 1: Geser ke kiri
 
@@ -64,13 +64,13 @@ module top_tm1638_demo(
     // Spasi Pemisah Antar Putaran (Indeks 15 - 17)
     assign msg[15]=S_BLK; assign msg[16]=S_BLK; assign msg[17]=S_BLK;
     
-    // Padding: Copy 7 karakter pertama agar loop mulus di ujung (Indeks 18 - 24)
+    // Padding untuk Looping Seamless (Indeks 18 - 24)
     assign msg[18]=S_2;   assign msg[19]=S_2;   assign msg[20]=S_MINUS; assign msg[21]=S_5;
     assign msg[22]=S_0;   assign msg[23]=S_0;   assign msg[24]=S_3;
 
     // --- Variabel Logika Animasi ---
     reg [23:0] timer = 0;
-    reg [23:0] led_timer = 0; // Tambahan timer khusus LED
+    reg [23:0] led_timer = 0; // Timer LED
     reg [4:0] offset = 0;
     reg dir_right = 0;
     reg [1:0] mode = 2'b00; 
@@ -104,7 +104,7 @@ module top_tm1638_demo(
             if (timer >= 12000000) begin
                 timer <= 0;
 
-                // A. Pergerakan Teks NIM (Tetap 1 Detik per langkah)
+                // A. Pergerakan Teks NIM 
                 if (mode == 2'b01) begin
                     if (offset < 17) offset <= offset + 1;
                     else offset <= 0; 
@@ -124,7 +124,7 @@ module top_tm1638_demo(
                 timer <= timer + 1;
             end
 
-            // B. Timer Khusus LED Atas 
+            // B. Timer Khusus LED 
             if (led_timer >= 1200000) begin 
                 led_timer <= 0;
 
