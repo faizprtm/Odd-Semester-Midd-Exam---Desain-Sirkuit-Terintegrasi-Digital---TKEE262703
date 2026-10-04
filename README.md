@@ -1,5 +1,36 @@
-# Odd-Semester-Midd-Exam---Desain-Sirkuit-Terintegrasi-Digital---TKEE262703
-This repository built as a progress update system providing the project documentations, and analysis for DSTD Midd Semester Exam.
+# oss-cad-suite-tcl-template by ABJ
+A template project to synthesys, place & route and generate bitstream.
+The environment is set for running on Windows and ICESugar FPGA board.
 
-For this project, the assignment is to build module for controlling  TM1638 LED & Key Display Module using ICESugar V1.5 FPGA.
-The expected outcome is to display an individual student number on a 7-segment display included on the TM1638 module itself, the number should be animated to move left or right based on input switch given.
+# pre-requisites
+Edit file setenv.bat following your local drive
+
+# how to run
+1. Setup environment for OSS CAD Suite <br />
+**$ setenv.bat**
+
+2. Create project, synthesis, place & route and generate bitsteram <br />
+	option 1: <br />
+	**$ make syn** <br />
+	**$ make pnr** <br />
+  **$ make bit** <br />
+	
+	option 2: <br />
+	**$ make all** <br />
+
+3. Load bitstream to FPGA board <br />
+**$ make flash**
+
+4. Clean build directory including project files <br />
+**$ make clean**
+
+5. To run simulation <br />
+
+	option 1: <br />
+	**$ make compile** <br />
+	**$ make vvp** <br />
+  **$ make gtk** <br />
+	
+	option 2: <br />
+	**$ make sim** <br />
+
